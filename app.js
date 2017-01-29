@@ -43,6 +43,6 @@ addDataToCollection('people', createPerson('Anne', 30, 'Paris'));
 addDataToCollection('people', createPerson('Alex', 24, 'Lille'));
 addDataToCollection('people', createPerson('Luis', 29, 'Paris'));
 
-var personInParis = findDocumentInCollection('people', 'city', 'Paris');
-
-changeAgeOfPeople(personInParis, 35);
+//var personInParis = findDocumentInCollection('people', 'city', 'Paris');
+//changeAgeOfPeople(personInParis, 35);
+changeAgeOfPeople(findDocumentInCollection('people', 'city', 'Paris'), 35) ;
