@@ -25,6 +25,15 @@ function findDocumentInCollection(nameOfCollection, nameofProperty, valueOfPrope
     return null;
 };  
 
+function changeAgeOfPeople(personInParis, age) {
+    personInParis.age = age;
+    updateDataInCollection('people', personInParis);
+};
+
+function updateDataInCollection(nameOfCollection, newData) {
+    database.nameOfCollection = newData;
+};
+
 addCollectionToDatabase('people');
 
 addDataToCollection('people', createPerson('Jaque', 44, 'Rome'));
@@ -36,4 +45,4 @@ addDataToCollection('people', createPerson('Luis', 29, 'Paris'));
 
 var personInParis = findDocumentInCollection('people', 'city', 'Paris');
 
-console.log(personInParis);
+changeAgeOfPeople(personInParis, 35);
