@@ -25,13 +25,24 @@ function findDocumentInCollection(nameOfCollection, nameofProperty, valueOfPrope
     return null;
 };  
 
+function changeAgeOfPeople(personInParis, age) {
+    personInParis.age = age;
+    updateDataInCollection('people', personInParis);
+};
+
+function updateDataInCollection(nameOfCollection, newData) {
+    database.nameOfCollection = newData;
+};
+
 addCollectionToDatabase('people');
 
 addDataToCollection('people', createPerson('Jaque', 44, 'Rome'));
-addDataToCollection('people', createPerson('Paul', 55, 'Berlin'));
+addDataToCollection('people', createPerson('Paul', 55, 'Bxl'));
 addDataToCollection('people', createPerson('marc', 24, 'Madrid'));
-addDataToCollection('people', createPerson('Luis', 33, 'Paris'));
+addDataToCollection('people', createPerson('Anne', 30, 'Paris'));
+addDataToCollection('people', createPerson('Alex', 24, 'Lille'));
+addDataToCollection('people', createPerson('Luis', 29, 'Paris'));
 
-findDocumentInCollection('people', 'city', 'Paris');
-
-console.log(findDocumentInCollection('people', 'city', 'Paris'));
+//var personInParis = findDocumentInCollection('people', 'city', 'Paris');
+//changeAgeOfPeople(personInParis, 35);
+changeAgeOfPeople(findDocumentInCollection('people', 'city', 'Paris'), 35) ;
