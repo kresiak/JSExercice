@@ -43,12 +43,10 @@ function findDocumentInCollection(nameOfCollection, nameOfProperty, valueOfPrope
 }};
 
 function findDocumentsInCollection(nameOfCollection, nameOfProperty, valueOfProperty){
-    database[nameOfCollection].filter(function (inParis) {
-        return inParis[nameOfProperty] == valueOfProperty; 
-        }).forEach(function (inParis) {
-//        return inParis;
-        return console.log(inParis);
-    });
+   var arrayResultat = database[nameOfCollection].filter(function (element) {
+        return element[nameOfProperty] == valueOfProperty; 
+    })
+    return arrayResultat;
 };
 
 addCollectionToDatabase('people');
