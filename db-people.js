@@ -49,6 +49,13 @@ function findDocumentsInCollection(nameOfCollection, nameOfProperty, valueOfProp
     return arrayResultat;
 };
 
+function changeAgePeopleInParis(arrayResultat, age){
+    arrayResultat.forEach(function (item){
+    item.age = age;
+    return arrayResultat;
+    })
+};
+
 addCollectionToDatabase('people');
 
 addDataToCollection('people', createPerson('Luis', 37, 'Brussels'));
@@ -59,3 +66,4 @@ addDataToCollection('people', createPerson('Eva', 80, 'Paris'));
 
 findDocumentInCollection('people', 'city', 'Paris');
 findDocumentsInCollection('people', 'city', 'Paris');
+changeAgePeopleInParis(findDocumentsInCollection('people', 'city', 'Paris'), 36);
