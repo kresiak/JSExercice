@@ -5,23 +5,23 @@ person[1] = { name: 'Alex', age: 67, city: 'Madrid' };
 person[2] = { name: 'Nicole', age: 89, city: 'Paris' };
 person[3] = { name: 'Jaque', age: 20, city: 'Paris' };
 
-function createPerson(name, age, city){     //  function  pure
-    var person = {};    
+function createPerson(name, age, city) {     //  function  pure
+    var person = {};
     person.name = name;
     person.age = age;
     person.city = city;
-    return person; 
+    return person;
 };
 
 function addCollectionToDatabase(nameOfCollection) {
-    database[nameOfCollection] = []; 
+    database[nameOfCollection] = [];
 };
 
 function addDataToCollection(nameOfCollection, data) {
     database[nameOfCollection].push(data);
 };
 
-function getDataFromCollection(nameOfCollection, positionInCollection){
+function getDataFromCollection(nameOfCollection, positionInCollection) {
     var gotData = database[nameOfCollection][positionInCollection];
     return gotData;
 };
@@ -30,31 +30,33 @@ function addChangedDataToCollection(nameOfCollection, positionInCollection, data
     database[nameOfCollection][positionInCollection] = data;
 };
 
-function updateDataInCollection(nameOfCollection, positionInCollection, newData){ 
+function updateDataInCollection(nameOfCollection, positionInCollection, newData) {
     addChangedDataToCollection(nameOfCollection, positionInCollection, newData);
 };
 
-function findDocumentInCollection(nameOfCollection, nameOfProperty, valueOfProperty){
-    for ( i = 0; i < database[nameOfCollection].length; i++){
-    if (database[nameOfCollection][i][nameOfProperty] == valueOfProperty){
-       var personInParis = database[nameOfCollection][i];
-       return personInParis;
+function findDocumentInCollection(nameOfCollection, nameOfProperty, valueOfProperty) {
+    for (i = 0; i < database[nameOfCollection].length; i++) {
+        if (database[nameOfCollection][i][nameOfProperty] == valueOfProperty) {
+            var personInParis = database[nameOfCollection][i];
+            return personInParis;
+        }
     }
-}};
+};
 
-function findDocumentsInCollection(nameOfCollection, nameOfProperty, valueOfProperty){
-   var arrayResultat = database[nameOfCollection].filter(function (element) {
-        return element[nameOfProperty] == valueOfProperty; 
+function findDocumentsInCollection(nameOfCollection, nameOfProperty, valueOfProperty) {
+    var arrayResultat = database[nameOfCollection].filter(function (element) {
+        return element[nameOfProperty] == valueOfProperty;
     })
     return arrayResultat;
 };
 
-function changeAgePeopleInParis(arrayResultat, age){
-    arrayResultat.forEach(function (item){
-    item.age = age;
-    return arrayResultat;
+function changePropertyOfList(arrayResultat, nameOfProperty, valueOfProperty) {
+    arrayResultat.forEach(function (element) {
+        element[nameOfProperty] = valueOfProperty;
     })
+    return arrayResultat;
 };
+
 
 addCollectionToDatabase('people');
 
@@ -66,4 +68,4 @@ addDataToCollection('people', createPerson('Eva', 80, 'Paris'));
 
 findDocumentInCollection('people', 'city', 'Paris');
 findDocumentsInCollection('people', 'city', 'Paris');
-changeAgePeopleInParis(findDocumentsInCollection('people', 'city', 'Paris'), 36);
+changePropertyOfList(findDocumentsInCollection('people', 'city', 'Paris'), 'age', 36);
