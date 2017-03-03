@@ -57,6 +57,14 @@ function changePropertyOfList(arrayResultat, nameOfProperty, valueOfProperty) {
     return arrayResultat;
 };
 
+function getReportForPeople(nameOfCollection) {
+    database[nameOfCollection].map(function(report) {return report.name + ' habite a ' + report.city + ' et a ' + report.age + ' ans.'
+    })
+};
+
+function getReportForPeopleSpecified(nameOfCollection) {
+    database[nameOfCollection].filter(person => person.age > 30).map(person => person.name + ' habite a ' + person.city + ' et son age est ' + person.age)
+};
 
 addCollectionToDatabase('people');
 
@@ -64,8 +72,11 @@ addDataToCollection('people', createPerson('Luis', 37, 'Brussels'));
 addDataToCollection('people', createPerson('marc', 24, 'Paris'));
 addDataToCollection('people', createPerson('Paul', 55, 'Madrid'));
 addDataToCollection('people', createPerson('Jaque', 39, 'Bonn'));
-addDataToCollection('people', createPerson('Eva', 80, 'Paris'));
+addDataToCollection('people', createPerson('Eva', 20, 'Paris'));
 
-findDocumentInCollection('people', 'city', 'Paris');
-findDocumentsInCollection('people', 'city', 'Paris');
-changePropertyOfList(findDocumentsInCollection('people', 'city', 'Paris'), 'age', 36);
+//findDocumentInCollection('people', 'city', 'Paris');
+//findDocumentsInCollection('people', 'city', 'Paris');
+//changePropertyOfList(findDocumentsInCollection('people', 'city', 'Paris'), 'age', 36);
+
+getReportForPeople('people');
+getReportForPeopleSpecified('people');
