@@ -66,6 +66,10 @@ function getReportForPeopleSpecified(nameOfCollection) {
     database[nameOfCollection].filter(person => person.age > 30).map(person => person.name + ' habite a ' + person.city + ' et son age est ' + person.age)
 };
 
+function getSortedPeople(nameOfCollection) {
+    var sorted = database[nameOfCollection].sort((a, b) => {return a.name.toLowerCase() > b.name.toLowerCase()})
+};
+
 addCollectionToDatabase('people');
 
 addDataToCollection('people', createPerson('Luis', 37, 'Brussels'));
@@ -78,5 +82,7 @@ addDataToCollection('people', createPerson('Eva', 20, 'Paris'));
 //findDocumentsInCollection('people', 'city', 'Paris');
 //changePropertyOfList(findDocumentsInCollection('people', 'city', 'Paris'), 'age', 36);
 
-getReportForPeople('people');
-getReportForPeopleSpecified('people');
+//getReportForPeople('people');
+//getReportForPeopleSpecified('people');
+
+getSortedPeople('people');
